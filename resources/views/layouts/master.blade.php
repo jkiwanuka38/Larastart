@@ -13,7 +13,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
   <title>Larastart - @yield('title')</title>
-
+  {{-- favicon --}}
+  <link rel="icon" href="{{asset('img/favicon.png')}}" type="image/x-icon" />
   <link rel="stylesheet" href="{{asset('css/app.css')}}">
 </head>
 <body class="hold-transition sidebar-mini">
@@ -45,11 +46,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="/" class="brand-link">
+    <router-link to="/dashboard" class="brand-link">
       <img src="{{asset('img/logo.png')}}" alt="Larastart Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
       <span class="brand-text font-weight-light">Lara Start</span>
-    </a>
+   </router-link>
 
     <!-- Sidebar -->
     <div class="sidebar">
@@ -59,7 +60,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <img src="{{asset('img/boss.png')}}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <router-link to="/profile" class="d-block">{{Auth::user()->name}}</router-link>
+          <p class="blue">{{Auth::user()->name}}</p>
         </div>
       </div>
 
@@ -70,7 +71,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                with font-awesome or any other icon font library -->
             <li class="nav-item">
                <router-link to="/dashboard" class="nav-link">
-                  <i class="nav-icon fas fa-tachometer-alt"></i>
+                  <i class="nav-icon fas fa-tachometer-alt blue"></i>
                   <p>
                      Dashboard
                   </p>
@@ -78,7 +79,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </li>
             <li class="nav-item has-treeview">
                <a href="#" class="nav-link">
-                 <i class="nav-icon fas fa-cog"></i>
+                 <i class="nav-icon fas fa-cog green"></i>
                  <p>
                     Management
                    <i class="right fas fa-angle-left"></i>
@@ -86,22 +87,24 @@ scratch. This page gets rid of all links and provides the needed markup only.
                </a>
                <ul class="nav nav-treeview">
                  <li class="nav-item">
-                   <a href="#" class="nav-link">
-                     <i class="fas fa-circle-o nav-icon"></i>
-                     <p>Active Page</p>
-                   </a>
-                 </li>
-                 <li class="nav-item">
-                   <a href="#" class="nav-link">
-                     <i class="fas fa-circle-o nav-icon"></i>
-                     <p>Inactive Page</p>
-                   </a>
+                   <router-link to="/users" class="nav-link">
+                     <i class="fas fa-users nav-icon "></i>
+                     <p>Users</p>
+                  </router-link>
                  </li>
                </ul>
             </li>
             <li class="nav-item">
+               <router-link to="/profile" class="nav-link">
+                  <i class="nav-icon fas fa-user orange"></i>
+                  <p>
+                     Profile
+                  </p>
+               </router-link>
+            </li>
+            <li class="nav-item">
                <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                  <i class="fas fa-power-off nav-icon"></i>
+                  <i class="fas fa-power-off nav-icon red"></i>
                   <p>
                      {{ __('Logout') }}
                   </p>
