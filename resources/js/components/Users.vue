@@ -35,10 +35,10 @@
                       <td>{{user.type | upText}}</td>
                       <td>{{user.created_at | myDate}}</td>
                       <td>
-                         <a href="#">
+                         <a href="#" class="btn btn-sm btn-outline-primary">
                             <i class="fas fa-edit blue"></i>
                          </a>
-                         <a href="#">
+                         <a href="#" class="btn btn-sm btn-outline-danger">
                             <i class="fas fa-trash red"></i>
                          </a>
                       </td>
@@ -130,7 +130,14 @@
 
         createUser(){
           //submit the form via a POST request
+          this.$Progress.start();
           this.form.post('api/user');
+          $('#addNew').modal('hide');
+          toast({
+            type: 'success',
+            title: 'User created successfully'
+          })
+          this.$Progress.finish();
         }
       },
       created() {
